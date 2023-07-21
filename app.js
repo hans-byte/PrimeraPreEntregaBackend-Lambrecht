@@ -30,7 +30,6 @@ app.get('/api/products/:id', async (req, res) =>{
     try {
         const id = parseInt(req.params.id)
         const getSpecificProduct = await products.getProductById(id);
-        console.log(getSpecificProduct)
         return res.send(getSpecificProduct)
     } catch (error) {
         res.send(error);
@@ -38,3 +37,4 @@ app.get('/api/products/:id', async (req, res) =>{
 
     
 })
+
