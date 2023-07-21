@@ -28,9 +28,10 @@ app.get('/api/products', async (req,res)=>{
 
 app.get('/api/products/:id', async (req, res) =>{
     try {
-        const getProducts = await products.getProducts() 
         const id = parseInt(req.params.id)
-        res.send(getProducts.find((x) => x.id === id))
+        const getSpecificProduct = await products.getProductById(id);
+        console.log(getSpecificProduct)
+        return res.send(getSpecificProduct)
     } catch (error) {
         res.send(error);
     }

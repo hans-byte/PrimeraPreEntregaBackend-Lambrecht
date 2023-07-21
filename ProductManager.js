@@ -24,8 +24,7 @@ export class ProductManager {
             const existingProducts = await this.getProducts()
             const productFinded = existingProducts.find((x) => x.id === idPassed)
             if(productFinded){
-              
-                return console.log(`The id passed correspond to the following product ${productFinded.title}`)
+                return productFinded
             }else{
                 return console.log("The id passed does not correspond to any product")
             }
