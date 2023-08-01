@@ -1,45 +1,42 @@
-[{
-    "id": 1,
-    "title": "title_1",
-    "description": "description_1",
-    "price": "price_1",
-    "thumbnail": "thumbnail_1",
-    "code": 111,
-    "stock": 10
-},
-{
-    "id": 2,
-    "title": "title_2",
-    "description": "description_2",
-    "price": "price_2",
-    "thumbnail": "thumbnail_2",
-    "code": 222,
-    "stock": 20
-},
-{
-    "id": 3,
-    "title": "title_3",
-    "description": "description_3",
-    "price": "price_3",
-    "thumbnail": "thumbnail_3",
-    "code": 333,
-    "stock": 30
-},
-{
-    "id": 4,
-    "title": "title_4",
-    "description": "description_4",
-    "price": "price_4",
-    "thumbnail": "thumbnail_4",
-    "code": 444,
-    "stock": 40
-},
-{
-    "id": 5,
-    "title": "title_5",
-    "description": "description_5",
-    "price": "price_5",
-    "thumbnail": "thumbnail_5",
-    "code": 555,
-    "stock": 50
-}]
+[
+    {
+        "id": 1,
+        "title": "Product_1",
+        "description": "Description_1",
+        "price": 10,
+        "thumbnail": "http://1",
+        "code": 111
+    },
+    {
+        "id": 2,
+        "title": "Product_2",
+        "description": "Description_2",
+        "price": 12,
+        "thumbnail": "http://1",
+        "code": 122
+    },
+    {
+        "id": 3,
+        "title": "Product_3",
+        "description": "Description_3",
+        "price": 15,
+        "thumbnail": "http://1",
+        "code": 133
+    },
+    {
+        "id": 4,
+        "title": "Product_4",
+        "description": "Description_4",
+        "price": 14,
+        "thumbnail": "http://1",
+        "code": 14
+    },
+    {
+        "id": 5,
+        "title": "Product_5",
+        "description": "Description_5",
+        "price": 20,
+        "thumbnail": "http://1",
+        "code": 155
+    }
+]

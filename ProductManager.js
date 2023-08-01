@@ -34,39 +34,45 @@ export class ProductManager {
 
     }
     
-    async addProduct(obj){
+    async addProduct(title,description,price,thumbnail,code,stock){
         try{
             const existingProducts = await this.getProducts()
-            let id 
-            if(!existingProducts.length){
-                id = 1;
-            }else{
-                id = existingProducts[existingProducts.length - 1].id + 1;
+            const id = existingProducts.length === 0 ? 1 : existingProducts[existingProducts.length - 1].id + 1
+            const newProduct = {
+                id,
+                title,
+                description,
+                price,
+                thumbnail,
+                code,
+                stock
             }
-            const codeRepited = existingProducts.find((x) => x.code === obj.code)
-            if(codeRepited){
-                return console.log("Code repited. It won´t be added")
-            }else{
-                const newArray = {id,...obj}
-                existingProducts.push(newArray)
+            if(!existingProducts.length){
+                existingProducts.push(newProduct)
                 await fs.promises.writeFile(this.path,JSON.stringify(existingProducts))
-                return newArray
+                return console.log("Product added")
+            }else{
+                const codeRepited = existingProducts.find((x) => x.code === newProduct.code)
+                if(codeRepited){
+                    return console.log("Code repited. It won´t be added")
+                }else{
+                    existingProducts.push(newProduct)
+                    return await fs.promises.writeFile(this.path,JSON.stringify(existingProducts))
+                }
             }
         }catch(error){
             return error
         }
 
     }
-
-   
+    
     async deleteProductById(idToBeDeleted){
         try{
             const existingProducts = await this.getProducts()
             const idCorrect = existingProducts.find(x => x.id === idToBeDeleted)
             if (idCorrect){
               const newArray = existingProducts.filter(x => x.id !== idToBeDeleted)
-              newArray = await fs.promises.writeFile(this.path, JSON.stringify(newArray));
-              return newArray
+              await fs.promises.writeFile(this.path,JSON.stringify(newArray))
             }else{
               console.log("The id doesn´t match to any of our products")
             }
@@ -82,12 +88,11 @@ export class ProductManager {
           if(indexToBeUpdated !== -1){
                 const productToBeUpdated = existingProducts[indexToBeUpdated]
                 existingProducts[indexToBeUpdated] = {...productToBeUpdated,...obj} 
-                const newArray = await fs.promises.writeFile(this.path,JSON.stringify(existingProducts));
-                return newArray;
+                await fs.promises.writeFile(this.path,JSON.stringify(existingProducts))
                 
-        }else{
-            return console.log("There´s no match between the id passed and the DB array")
-        }
+            }else{
+                return console.log("There´s no match between the id passed and the DB array")
+            }
         }catch(error){
             return error
         }
